@@ -1,0 +1,569 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UPC.APIBusiness.API</name>
+    </assembly>
+    <members>
+        <member name="T:API.AppSettingsProvider">
+            <summary>
+            AppSettingsProvider
+            </summary>
+        </member>
+        <member name="P:API.AppSettingsProvider.config">
+            <summary>
+            config
+            </summary>
+        </member>
+        <member name="T:API.ConfigSettings">
+            <summary>
+            Clase para datos de configuracion
+            Author: James Huiza
+            Date: 01 Enero 2021
+            </summary>
+        </member>
+        <member name="P:API.ConfigSettings.ApplicationName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:API.ConfigSettings.ApplicationType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:API.ConfigSettings.OrganizationName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:API.ConfigSettings.Version">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:API.ConfigSettings.CircuitBreak">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:API.CircuitBreak">
+            <summary>
+            CircuitBreaker
+            </summary>
+        </member>
+        <member name="P:API.CircuitBreak.HandledEventsAllowed">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:API.CircuitBreak.DurationOfBreakCircuit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:API.CircuitBreak.RetryCount">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:API.CircuitBreak.SleepDuration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:API.CircuitBreak.HandlerLifetime">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:API.CustomErrorException">
+            <summary>
+            Clase para el detalle de los errores en el Middleware
+            Author: James Huiza
+            Date: 01 Enero 2021
+            </summary>
+        </member>
+        <member name="P:API.CustomErrorException.StatusCode">
+            <summary>
+            Status de la llamada
+            </summary>
+        </member>
+        <member name="P:API.CustomErrorException.Message">
+            <summary>
+            Mensaje de error
+            </summary>
+        </member>
+        <member name="P:API.CustomErrorException.Details">
+            <summary>
+             Detalles
+            </summary>
+        </member>
+        <member name="P:API.CustomErrorException.Type">
+            <summary>
+             Tipo de Error
+            </summary>
+        </member>
+        <member name="P:API.CustomErrorException.Instance">
+            <summary>
+             Instancia
+            </summary>
+        </member>
+        <member name="M:API.CustomErrorException.ToString">
+            <summary>
+            Override para serializar la clase
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:API.Detail">
+            <summary>
+            Detalle Técnico de Error
+            </summary>
+        </member>
+        <member name="P:API.Detail.Stack">
+            <summary>
+             Tipo de Stack
+            </summary>
+        </member>
+        <member name="P:API.Detail.Code">
+            <summary>
+             Tipo de Code
+            </summary>
+        </member>
+        <member name="P:API.Detail.Object">
+            <summary>
+             Tipo de Object
+            </summary>
+        </member>
+        <member name="T:API.ErrorHandlingMiddleware">
+            <summary>
+            ErrorHandlingMiddleware
+            </summary>
+        </member>
+        <member name="M:API.ErrorHandlingMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            ErrorHandlingMiddleware constructor
+            </summary>
+            <param name="next"></param>
+        </member>
+        <member name="M:API.ErrorHandlingMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Task Invoke
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API.ErrorHandlingMiddleware.HandleExceptionAsync(Microsoft.AspNetCore.Http.HttpContext,System.Exception)">
+            <summary>
+            HandleExceptionAsync
+            </summary>
+            <param name="context"></param>
+            <param name="ex"></param>
+            <returns></returns>
+        </member>
+        <member name="T:API.NotFoundException">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:API.NotFoundException.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:API.NotFoundException.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="detail"></param>
+        </member>
+        <member name="T:API.UnauthorizedException">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:API.UnauthorizedException.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:API.UnauthorizedException.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="detail"></param>
+        </member>
+        <member name="T:API.BadRequestException">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:API.BadRequestException.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:API.BadRequestException.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="detail"></param>
+        </member>
+        <member name="T:API.HttpClientAuthorizationDelegatingHandler">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:API.HttpClientAuthorizationDelegatingHandler._configuration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:API.HttpClientAuthorizationDelegatingHandler.#ctor(Microsoft.AspNetCore.Http.IHttpContextAccessor,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="httpContextAccesor"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:API.HttpClientAuthorizationDelegatingHandler.SendAsync(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:API.Startup">
+            <summary>
+            /
+            </summary>
+        </member>
+        <member name="M:API.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:API.Startup.Configuration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:API.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:API.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+        <member name="T:UPC.APIBusiness.API.Controllers.CitaController">
+            <summary>
+            Controller
+            </summary>
+        </member>
+        <member name="F:UPC.APIBusiness.API.Controllers.CitaController.citaRepository">
+            <summary>
+            _CitaRepository
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.CitaController.#ctor(DBContext.ICitaRepository,DBContext.ISucursalRepository,DBContext.IEspecialidadRepository)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.CitaController.findAll">
+            <summary>
+            findAll
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.CitaController.load">
+            <summary>
+            load
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.CitaController.findById(System.Int32)">
+            <summary>
+            findById
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.CitaController.paginationByIdUsuario(System.Int32,System.String,System.Int32)">
+            <summary>
+            pagination
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.CitaController.save(DBEntity.EntityCita)">
+            <summary>
+            Save
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.CitaController.delete(System.Int32)">
+            <summary>
+            delete
+            </summary>
+        </member>
+        <member name="T:UPC.APIBusiness.API.Controllers.EspecialidadController">
+            <summary>
+            Controller
+            </summary>
+        </member>
+        <member name="F:UPC.APIBusiness.API.Controllers.EspecialidadController._EspecialidadRepository">
+            <summary>
+            _EspecialidadRepository
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.EspecialidadController.#ctor(DBContext.IEspecialidadRepository)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.EspecialidadController.findAll">
+            <summary>
+            findAll
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.EspecialidadController.findById(System.Int32)">
+            <summary>
+            findById
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.EspecialidadController.pagination(System.String,System.Int32)">
+            <summary>
+            pagination
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.EspecialidadController.save(DBEntity.EntityEspecialidad)">
+            <summary>
+            Save
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.EspecialidadController.delete(System.Int32)">
+            <summary>
+            delete
+            </summary>
+        </member>
+        <member name="T:UPC.APIBusiness.API.Controllers.EspecialistaController">
+            <summary>
+            Controller
+            </summary>
+        </member>
+        <member name="F:UPC.APIBusiness.API.Controllers.EspecialistaController.especialistaRepository">
+            <summary>
+            _EspecialistaRepository
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.EspecialistaController.#ctor(DBContext.IEspecialistaRepository,DBContext.IEspecialidadRepository,DBContext.ISucursalRepository)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.EspecialistaController.findAll">
+            <summary>
+            findAll
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.EspecialistaController.findById(System.Int32)">
+            <summary>
+            findById
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.EspecialistaController.load(System.Int32)">
+            <summary>
+            load
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.EspecialistaController.pagination(System.String,System.Int32)">
+            <summary>
+            pagination
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.EspecialistaController.filter(DBContext.Filter)">
+            <summary>
+            pagination
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.EspecialistaController.save(DBContext.EspecialistaExtend)">
+            <summary>
+            Save
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.EspecialistaController.delete(System.Int32)">
+            <summary>
+            delete
+            </summary>
+        </member>
+        <member name="T:UPC.APIBusiness.API.Controllers.HorarioController">
+            <summary>
+            Controller
+            </summary>
+        </member>
+        <member name="F:UPC.APIBusiness.API.Controllers.HorarioController._HorarioRepository">
+            <summary>
+            _HorarioRepository
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.HorarioController.#ctor(DBContext.IHorarioRepository)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.HorarioController.delete(System.Int32)">
+            <summary>
+            delete
+            </summary>
+        </member>
+        <member name="T:UPC.APIBusiness.API.Controllers.OtrosController">
+            <summary>
+            Controller
+            </summary>
+        </member>
+        <member name="T:UPC.APIBusiness.API.Controllers.SucursalController">
+            <summary>
+            Controller
+            </summary>
+        </member>
+        <member name="F:UPC.APIBusiness.API.Controllers.SucursalController._SucursalRepository">
+            <summary>
+            _SucursalRepository
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.SucursalController.#ctor(DBContext.ISucursalRepository)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.SucursalController.findAll">
+            <summary>
+            findAll
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.SucursalController.findById(System.Int32)">
+            <summary>
+            findById
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.SucursalController.pagination(System.String,System.Int32)">
+            <summary>
+            pagination
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.SucursalController.save(DBEntity.EntitySucursal)">
+            <summary>
+            Save
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.SucursalController.delete(System.Int32)">
+            <summary>
+            delete
+            </summary>
+        </member>
+        <member name="T:UPC.APIBusiness.API.Controllers.UsuarioController">
+            <summary>
+            Controller
+            </summary>
+        </member>
+        <member name="F:UPC.APIBusiness.API.Controllers.UsuarioController._UsuarioRepository">
+            <summary>
+            _UsuarioRepository
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.UsuarioController.#ctor(DBContext.IUsuarioRepository)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.UsuarioController.findAll">
+            <summary>
+            findAll
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.UsuarioController.findById(System.Int32)">
+            <summary>
+            findById
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.UsuarioController.pagination(System.String,System.Int32)">
+            <summary>
+            pagination
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.UsuarioController.save(DBEntity.EntityUsuario)">
+            <summary>
+            Save
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.UsuarioController.login(DBContext.Login)">
+            <summary>
+            delete
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.UsuarioController.delete(System.Int32)">
+            <summary>
+            delete
+            </summary>
+        </member>
+        <member name="T:UPC.Business.API.Controllers.UserController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:UPC.Business.API.Controllers.UserController._UserRepository">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:UPC.Business.API.Controllers.UserController.#ctor(DBContext.IUserRepository)">
+            <summary>
+            
+            </summary>
+            <param name="UserRepository"></param>
+        </member>
+        <member name="M:UPC.Business.API.Controllers.UserController.Get">
+            <summary>
+            GetListUser
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:UPC.E31A.APIBusiness.API.Security.AccessToken">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UPC.E31A.APIBusiness.API.Security.AccessToken.access_token">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UPC.E31A.APIBusiness.API.Security.AccessToken.token_type">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UPC.E31A.APIBusiness.API.Security.AccessToken.scope">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:UPC.E31A.APIBusiness.API.Security.AccessToken.expires_in">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:UPC.E31A.APIBusiness.API.Security.Authentication">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:UPC.E31A.APIBusiness.API.Security.Authentication.GenerateToken(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

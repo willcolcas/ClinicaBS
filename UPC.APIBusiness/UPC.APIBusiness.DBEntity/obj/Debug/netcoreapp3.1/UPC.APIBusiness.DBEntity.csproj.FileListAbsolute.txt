@@ -16,3 +16,13 @@ C:\Users\elber\Downloads\UPC.APIBusiness\UPC.APIBusiness\UPC.APIBusiness.DBEntit
 C:\Users\elber\Downloads\UPC.APIBusiness\UPC.APIBusiness\UPC.APIBusiness.DBEntity\obj\Debug\netcoreapp3.1\UPC.APIBusiness.DBEntity.csproj.CoreCompileInputs.cache
 C:\Users\elber\Downloads\UPC.APIBusiness\UPC.APIBusiness\UPC.APIBusiness.DBEntity\obj\Debug\netcoreapp3.1\UPC.APIBusiness.DBEntity.dll
 C:\Users\elber\Downloads\UPC.APIBusiness\UPC.APIBusiness\UPC.APIBusiness.DBEntity\obj\Debug\netcoreapp3.1\UPC.APIBusiness.DBEntity.pdb
+C:\Users\elber\Documents\GitHub\ncGilbertClinica\UPC.APIBusiness\UPC.APIBusiness.DBEntity\bin\Debug\netcoreapp3.1\UPC.APIBusiness.DBEntity.deps.json
+C:\Users\elber\Documents\GitHub\ncGilbertClinica\UPC.APIBusiness\UPC.APIBusiness.DBEntity\bin\Debug\netcoreapp3.1\UPC.APIBusiness.DBEntity.dll
+C:\Users\elber\Documents\GitHub\ncGilbertClinica\UPC.APIBusiness\UPC.APIBusiness.DBEntity\bin\Debug\netcoreapp3.1\UPC.APIBusiness.DBEntity.pdb
+C:\Users\elber\Documents\GitHub\ncGilbertClinica\UPC.APIBusiness\UPC.APIBusiness.DBEntity\obj\Debug\netcoreapp3.1\UPC.APIBusiness.DBEntity.csproj.AssemblyReference.cache
+C:\Users\elber\Documents\GitHub\ncGilbertClinica\UPC.APIBusiness\UPC.APIBusiness.DBEntity\obj\Debug\netcoreapp3.1\UPC.APIBusiness.DBEntity.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\elber\Documents\GitHub\ncGilbertClinica\UPC.APIBusiness\UPC.APIBusiness.DBEntity\obj\Debug\netcoreapp3.1\UPC.APIBusiness.DBEntity.AssemblyInfoInputs.cache
+C:\Users\elber\Documents\GitHub\ncGilbertClinica\UPC.APIBusiness\UPC.APIBusiness.DBEntity\obj\Debug\netcoreapp3.1\UPC.APIBusiness.DBEntity.AssemblyInfo.cs
+C:\Users\elber\Documents\GitHub\ncGilbertClinica\UPC.APIBusiness\UPC.APIBusiness.DBEntity\obj\Debug\netcoreapp3.1\UPC.APIBusiness.DBEntity.csproj.CoreCompileInputs.cache
+C:\Users\elber\Documents\GitHub\ncGilbertClinica\UPC.APIBusiness\UPC.APIBusiness.DBEntity\obj\Debug\netcoreapp3.1\UPC.APIBusiness.DBEntity.dll
+C:\Users\elber\Documents\GitHub\ncGilbertClinica\UPC.APIBusiness\UPC.APIBusiness.DBEntity\obj\Debug\netcoreapp3.1\UPC.APIBusiness.DBEntity.pdb

@@ -5,6 +5,6 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\elber\Documents\GitHub\ncGilbertClinica\UPC.APIBusiness\UPC.APIBusiness.API\bin\Release\netcoreapp3.1\publish\</_PublishTargetUrl>
-    <History>True|2021-11-24T03:42:10.6594557Z;</History>
+    <History>True|2021-11-25T05:06:56.7171381Z;True|2021-11-23T22:42:10.6594557-05:00;</History>
   </PropertyGroup>
 </Project>

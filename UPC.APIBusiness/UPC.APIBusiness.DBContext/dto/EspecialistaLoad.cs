@@ -5,10 +5,8 @@ namespace DBContext
 {
     public class EspecialistaLoad
     {
-        public EspecialistaExtend especialista { get; set; }
-        public List<EntityEspecialidad> especialidades { get; set; }
-        public List<EntitySucursal> sucursales { get; set; }
-
+        public EntityEspecialista especialista { get; set; }
+        public Pagination<EntityEspecialista> pagination { get; set; }
     }
 }
 

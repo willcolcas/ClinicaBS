@@ -55,38 +55,56 @@ namespace DBContext
             return especialista;
         }
 
-        public EntityEspecialista save(EspecialistaExtend especialistaExtend)
+        public EntityEspecialista save(EntityEspecialista especialista)
         {
-            var especialista = new EntityEspecialista();
             using (var db = GetSqlConnection())
             {
                 const string sql = @"sp_especialista_save";
                 DynamicParameters parameters_01 = new DynamicParameters();
-                parameters_01.Add("@id", especialistaExtend.id);
-                parameters_01.Add("@nombres", especialistaExtend.nombres);
-                parameters_01.Add("@apellidos", especialistaExtend.apellidos);
-                parameters_01.Add("@dni", especialistaExtend.dni);
-                parameters_01.Add("@id_especialidad", especialistaExtend.id_especialidad);
-                parameters_01.Add("@id_sucursal", especialistaExtend.id_sucursal);
+                parameters_01.Add("@id", especialista.id);
+                parameters_01.Add("@nombres", especialista.nombres);
+                parameters_01.Add("@apellidos", especialista.apellidos);
+                parameters_01.Add("@dni", especialista.dni);
                 especialista = db.Query<EntityEspecialista>(sql: sql, commandType: CommandType.StoredProcedure, param: parameters_01).FirstOrDefault<EntityEspecialista>();
-
-                foreach (var item in especialistaExtend.horarios)
-                {
-                    const string sql_02 = @"sp_horario_save";
-                    DynamicParameters parameters_02 = new DynamicParameters();
-                    parameters_02.Add("@id", item.id);
-                    parameters_02.Add("@id_especialista", especialista.id);
-                    parameters_02.Add("@inicio", item.inicio);
-                    parameters_02.Add("@fin", item.fin);
-                    db.Query<EntityHorario>(sql: sql_02, commandType: CommandType.StoredProcedure, param: parameters_02);
-                }
             }
             return especialista;
         }
 
-        public Pagination<EspecialistaExtend> pagination(string searchText = "", int page = 1, int numItems = 10)
+
+
+
+        public void saveHorarios(List<EntityHorario> horarios)
         {
-            var pagination = new Pagination<EspecialistaExtend>();
+            var especialista = new EntityEspecialista();
+            using (var db = GetSqlConnection())
+            {
+                foreach (var item in horarios)
+                {
+                    const string sql_02 = @"sp_horario_save";
+                    DynamicParameters parameters_02 = new DynamicParameters();
+                    parameters_02.Add("@id", item.id);
+                    parameters_02.Add("@id_especialista", item.id);
+                    parameters_02.Add("@id_sucursal", item.id_sucursal);
+                    parameters_02.Add("@id_especialidad", item.id_especialidad);
+                    parameters_02.Add("@tipo", item.tipo);
+                    parameters_02.Add("@dia", item.dia);
+                    db.Query<EntityHorario>(sql: sql_02, commandType: CommandType.StoredProcedure, param: parameters_02);
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+        public Pagination<EntityEspecialista> pagination(string searchText = "", int page = 1, int numItems = 10)
+        {
+            var pagination = new Pagination<EntityEspecialista>();
             using (var db = GetSqlConnection())
             {
                 const string sql_01 = @"sp_especialista_pagination";
@@ -94,7 +112,7 @@ namespace DBContext
                 parameters_01.Add("@search_text", searchText);
                 parameters_01.Add("@num_items", numItems);
                 parameters_01.Add("@page", page - 1);
-                pagination.content = db.Query<EspecialistaExtend>(sql: sql_01, commandType: CommandType.StoredProcedure, param: parameters_01).ToList();
+                pagination.content = db.Query<EntityEspecialista>(sql: sql_01, commandType: CommandType.StoredProcedure, param: parameters_01).ToList();
                 DynamicParameters parameters_02 = new DynamicParameters();
                 parameters_02.Add("@search_text", searchText);
                 parameters_02.Add("@num_items", numItems);

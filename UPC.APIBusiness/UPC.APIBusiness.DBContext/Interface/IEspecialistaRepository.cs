@@ -6,11 +6,11 @@ namespace DBContext
     public interface IEspecialistaRepository
     {
         List<EspecialistaExtend> findAll();
-        EntityEspecialista save(EspecialistaExtend especialidad);
+        EntityEspecialista save(EntityEspecialista especialidad);
         EspecialistaExtend findById(int id);
-        Pagination<EspecialistaExtend> pagination(string searchText = "_", int page = 1, int numItems = 10);
-        Pagination<EspecialistaExtend> filter(int id_especialidad,int is_sucursal);
+        Pagination<EntityEspecialista> pagination(string searchText = "_", int page = 1, int numItems = 10);
         void delete(int id);
         Pagination<EspecialistaExtend> filter(Filter filter);
+        void saveHorarios(List<EntityHorario> horarios);
     }
 }

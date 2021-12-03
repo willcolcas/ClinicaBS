@@ -1,4 +1,5 @@
-﻿using DBContext;
+﻿using System.Collections.Generic;
+using DBContext;
 using DBEntity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -20,16 +21,12 @@ namespace UPC.APIBusiness.API.Controllers
         /// _EspecialistaRepository
         /// </summary>
         protected readonly IEspecialistaRepository especialistaRepository;
-        protected readonly IEspecialidadRepository especialidadRepository;
-        protected readonly ISucursalRepository sucursalRepository;
         /// <summary>
         /// Constructor
         /// </summary>
-        public EspecialistaController(IEspecialistaRepository especialistaRepository, IEspecialidadRepository especialidadRepository, ISucursalRepository sucursalRepository)
+        public EspecialistaController(IEspecialistaRepository especialistaRepository)
         {
             this.especialistaRepository = especialistaRepository;
-            this.especialidadRepository = especialidadRepository;
-            this.sucursalRepository = sucursalRepository;
         }
         /// <summary>
         /// findAll
@@ -64,14 +61,12 @@ namespace UPC.APIBusiness.API.Controllers
         /// </summary>
         [OpenApiOperation("load")]
         [HttpGet]
-        [Route("load/{id}")]
-        public ActionResult load(int id)
+        [Route("load/{id}/{page}")]
+        public ActionResult load(int id, int page)
         {
-            var res = especialistaRepository.findById(id);
             var especialistaLoad = new EspecialistaLoad();
-            especialistaLoad.especialista = res;
-            especialistaLoad.especialidades = especialidadRepository.findAll();
-            especialistaLoad.sucursales = sucursalRepository.findAll();
+            especialistaLoad.especialista = especialistaRepository.findById(id);
+            especialistaLoad.pagination = especialistaRepository.pagination(page: page);
             return Json(especialistaLoad);
         }
 
@@ -89,23 +84,19 @@ namespace UPC.APIBusiness.API.Controllers
             return Json(res);
         }
 
-
-
         /// <summary>
         /// pagination
         /// </summary>
         [OpenApiOperation("Filter")]
         [HttpPost]
         [Route("filter")]
-        public ActionResult filter([FromBody]Filter filter)
+        public ActionResult filter([FromBody] Filter filter)
         {
             var res = especialistaRepository.filter(filter);
             if (res == null)
                 return StatusCode(401);
             return Json(res);
         }
-
-
         /// <summary>
         /// Save
         /// </summary>
@@ -119,6 +110,19 @@ namespace UPC.APIBusiness.API.Controllers
                 return StatusCode(401);
             return Json(res);
         }
+
+        /// <summary>
+        /// SaveHorarios
+        /// </summary>
+        [OpenApiOperation("SaveHorarios")]
+        [Consumes("application/json")]
+        [HttpPost]
+        [Route("saveHorarios")]
+        public void saveHorarios([FromBody] List<EntityHorario> horarios)
+        {
+            especialistaRepository.saveHorarios(horarios);
+        }
+
         /// <summary>
         /// delete
         /// </summary>

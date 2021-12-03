@@ -17,15 +17,20 @@ namespace UPC.APIBusiness.API.Controllers
     public class EspecialidadController : Controller
     {
         /// <summary>
-        /// _EspecialidadRepository
+        /// especialidadRepository
         /// </summary>
-        protected readonly IEspecialidadRepository _EspecialidadRepository;
+        protected readonly IEspecialidadRepository _especialidadRepository;
+        /// <summary>
+        /// sucursalRepository
+        /// </summary>
+        protected readonly ISucursalRepository _sucursalRepository;
         /// <summary>
         /// Constructor
         /// </summary>
-        public EspecialidadController(IEspecialidadRepository EspecialidadRepository)
+        public EspecialidadController(IEspecialidadRepository EspecialidadRepository, ISucursalRepository sucursalRepository)
         {
-            _EspecialidadRepository = EspecialidadRepository;
+            this._especialidadRepository = EspecialidadRepository;
+            this._sucursalRepository = sucursalRepository;
         }
         /// <summary>
         /// findAll
@@ -34,12 +39,31 @@ namespace UPC.APIBusiness.API.Controllers
         [HttpGet]
         public ActionResult findAll()
         {
-            var res = _EspecialidadRepository.findAll();
+            var res = _especialidadRepository.findAll();
             if (res == null)
                 return StatusCode(401);
 
             return Json(res);
         }
+
+
+
+        /// <summary>
+        /// load
+        /// </summary>
+        [OpenApiOperation("load")]
+        [HttpGet]
+        [Route("load/{id}/{page}")]
+        public ActionResult load(int id, int page)
+        {
+            var especialidadLoad = new EspecialidadLoad();
+            especialidadLoad.especialidad = _especialidadRepository.findById(id);
+            especialidadLoad.pagination = _especialidadRepository.pagination(page: page);
+            especialidadLoad.sucursales = _sucursalRepository.findAll();
+            return Json(especialidadLoad);
+        }
+
+
         /// <summary>
         /// findById
         /// </summary>
@@ -48,7 +72,7 @@ namespace UPC.APIBusiness.API.Controllers
         [Route("{id}")]
         public ActionResult findById(int id)
         {
-            var res = _EspecialidadRepository.findById(id);
+            var res = _especialidadRepository.findById(id);
             if (res == null)
                 return StatusCode(401);
             return Json(res);
@@ -62,7 +86,7 @@ namespace UPC.APIBusiness.API.Controllers
         [Route("pagination/{searchText}/{page}")]
         public ActionResult pagination(string searchText = "", int page = 0)
         {
-            var res = _EspecialidadRepository.pagination(searchText, page);
+            var res = _especialidadRepository.pagination(searchText, page);
             if (res == null)
                 return StatusCode(401);
             return Json(res);
@@ -80,9 +104,9 @@ namespace UPC.APIBusiness.API.Controllers
         [OpenApiOperation("Save")]
         [Consumes("application/json")]
         [HttpPost]
-        public ActionResult save([FromBody]EntityEspecialidad especialidad)
+        public ActionResult save([FromBody] EntityEspecialidad especialidad)
         {
-            var res = _EspecialidadRepository.save(especialidad);
+            var res = _especialidadRepository.save(especialidad);
             if (res == null)
                 return StatusCode(401);
             return Json(res);
@@ -95,7 +119,7 @@ namespace UPC.APIBusiness.API.Controllers
         [Route("{id}")]
         public void delete(int id)
         {
-            _EspecialidadRepository.delete(id);
+            _especialidadRepository.delete(id);
         }
     }
 }

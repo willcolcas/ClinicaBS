@@ -56,6 +56,7 @@ namespace DBContext
             {
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("@id", especialidad.id);
+                parameters.Add("@id_sucursal", especialidad.id_sucursal);
                 parameters.Add("@nombre", especialidad.nombre);
                 parameters.Add("@descripcion", especialidad.descripcion);
 
@@ -69,9 +70,9 @@ namespace DBContext
             return res;
         }
 
-        public Pagination<EntityEspecialidad> pagination(string searchText = "", int page = 1, int numItems = 10)
+        public Pagination<EspecialidadExtend> pagination(string searchText = "", int page = 1, int numItems = 10)
         {
-            var pagination = new Pagination<EntityEspecialidad>();
+            var pagination = new Pagination<EspecialidadExtend>();
             using (var db = GetSqlConnection())
             {
                 const string sql_01 = @"sp_especialidad_pagination";
@@ -79,7 +80,7 @@ namespace DBContext
                 parameters_01.Add("@search_text", searchText);
                 parameters_01.Add("@num_items", numItems);
                 parameters_01.Add("@page", page - 1);
-                pagination.content = db.Query<EntityEspecialidad>(sql: sql_01, commandType: CommandType.StoredProcedure, param: parameters_01).ToList();
+                pagination.content = db.Query<EspecialidadExtend>(sql: sql_01, commandType: CommandType.StoredProcedure, param: parameters_01).ToList();
 
                 DynamicParameters parameters_02 = new DynamicParameters();
                 parameters_02.Add("@search_text", searchText);

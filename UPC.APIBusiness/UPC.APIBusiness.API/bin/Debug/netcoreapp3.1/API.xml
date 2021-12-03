@@ -312,12 +312,17 @@
             Controller
             </summary>
         </member>
-        <member name="F:UPC.APIBusiness.API.Controllers.EspecialidadController._EspecialidadRepository">
+        <member name="F:UPC.APIBusiness.API.Controllers.EspecialidadController._especialidadRepository">
             <summary>
-            _EspecialidadRepository
+            especialidadRepository
             </summary>
         </member>
-        <member name="M:UPC.APIBusiness.API.Controllers.EspecialidadController.#ctor(DBContext.IEspecialidadRepository)">
+        <member name="F:UPC.APIBusiness.API.Controllers.EspecialidadController._sucursalRepository">
+            <summary>
+            sucursalRepository
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.EspecialidadController.#ctor(DBContext.IEspecialidadRepository,DBContext.ISucursalRepository)">
             <summary>
             Constructor
             </summary>
@@ -325,6 +330,11 @@
         <member name="M:UPC.APIBusiness.API.Controllers.EspecialidadController.findAll">
             <summary>
             findAll
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.EspecialidadController.load(System.Int32,System.Int32)">
+            <summary>
+            load
             </summary>
         </member>
         <member name="M:UPC.APIBusiness.API.Controllers.EspecialidadController.findById(System.Int32)">
@@ -357,7 +367,7 @@
             _EspecialistaRepository
             </summary>
         </member>
-        <member name="M:UPC.APIBusiness.API.Controllers.EspecialistaController.#ctor(DBContext.IEspecialistaRepository,DBContext.IEspecialidadRepository,DBContext.ISucursalRepository)">
+        <member name="M:UPC.APIBusiness.API.Controllers.EspecialistaController.#ctor(DBContext.IEspecialistaRepository)">
             <summary>
             Constructor
             </summary>
@@ -372,7 +382,7 @@
             findById
             </summary>
         </member>
-        <member name="M:UPC.APIBusiness.API.Controllers.EspecialistaController.load(System.Int32)">
+        <member name="M:UPC.APIBusiness.API.Controllers.EspecialistaController.load(System.Int32,System.Int32)">
             <summary>
             load
             </summary>
@@ -390,6 +400,11 @@
         <member name="M:UPC.APIBusiness.API.Controllers.EspecialistaController.save(DBContext.EspecialistaExtend)">
             <summary>
             Save
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.EspecialistaController.saveHorarios(System.Collections.Generic.List{DBEntity.EntityHorario})">
+            <summary>
+            SaveHorarios
             </summary>
         </member>
         <member name="M:UPC.APIBusiness.API.Controllers.EspecialistaController.delete(System.Int32)">
@@ -445,6 +460,11 @@
         <member name="M:UPC.APIBusiness.API.Controllers.SucursalController.findById(System.Int32)">
             <summary>
             findById
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.SucursalController.load(System.Int32,System.Int32)">
+            <summary>
+            load
             </summary>
         </member>
         <member name="M:UPC.APIBusiness.API.Controllers.SucursalController.pagination(System.String,System.Int32)">

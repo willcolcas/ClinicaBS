@@ -25,6 +25,9 @@ namespace UPC.APIBusiness.API.Controllers
         {
             _SucursalRepository = SucursalRepository;
         }
+
+
+
         /// <summary>
         /// findAll
         /// </summary>
@@ -51,7 +54,22 @@ namespace UPC.APIBusiness.API.Controllers
                 return StatusCode(401);
             return Json(res);
         }
-
+        /// <summary>
+        /// load
+        /// </summary>
+        [OpenApiOperation("load")]
+        [HttpGet]
+        [Route("load/{id}/{page}")]
+        public ActionResult load(int id, int page)
+        {
+            var sl = new SucursalLoad();
+            sl.sucursal = _SucursalRepository.findById(id);
+            sl.departamentos = _SucursalRepository.departamentos();
+            sl.provincias = _SucursalRepository.provincias();
+            sl.distritos = _SucursalRepository.distritos();
+            sl.pagination = _SucursalRepository.pagination(page: page);
+            return Json(sl);
+        }
         /// <summary>
         /// pagination
         /// </summary>

@@ -14,6 +14,7 @@ namespace UPC.APIBusiness.API.Controllers
     [AllowAnonymous]
     [Route("api/especialidad")]
     [Produces("application/json")]
+
     public class EspecialidadController : Controller
     {
         /// <summary>

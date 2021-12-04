@@ -15,18 +15,23 @@ namespace UPC.APIBusiness.API.Controllers
     [AllowAnonymous]
     [Produces("application/json")]
     [Route("api/especialista")]
+
     public class EspecialistaController : Controller
     {
         /// <summary>
         /// _EspecialistaRepository
         /// </summary>
-        protected readonly IEspecialistaRepository especialistaRepository;
+        protected readonly IEspecialistaRepository _especialistaRepository;
+        protected readonly ISucursalRepository _sucursalRepository;
+        protected readonly IEspecialidadRepository _especialidadRepository;
         /// <summary>
         /// Constructor
         /// </summary>
-        public EspecialistaController(IEspecialistaRepository especialistaRepository)
+        public EspecialistaController(IEspecialistaRepository especialistaRepository, ISucursalRepository sucursalRepository, IEspecialidadRepository especialidadRepository)
         {
-            this.especialistaRepository = especialistaRepository;
+            this._especialistaRepository = especialistaRepository;
+            this._sucursalRepository = sucursalRepository;
+            this._especialidadRepository = especialidadRepository;
         }
         /// <summary>
         /// findAll
@@ -35,7 +40,7 @@ namespace UPC.APIBusiness.API.Controllers
         [HttpGet]
         public ActionResult findAll()
         {
-            var res = especialistaRepository.findAll();
+            var res = _especialistaRepository.findAll();
             if (res == null)
                 return StatusCode(401);
 
@@ -50,7 +55,7 @@ namespace UPC.APIBusiness.API.Controllers
         [Route("{id}")]
         public ActionResult findById(int id)
         {
-            var res = especialistaRepository.findById(id);
+            var res = _especialistaRepository.findById(id);
             if (res == null)
                 return StatusCode(401);
             return Json(res);
@@ -65,9 +70,27 @@ namespace UPC.APIBusiness.API.Controllers
         public ActionResult load(int id, int page)
         {
             var especialistaLoad = new EspecialistaLoad();
-            especialistaLoad.especialista = especialistaRepository.findById(id);
-            especialistaLoad.pagination = especialistaRepository.pagination(page: page);
+            especialistaLoad.especialista = _especialistaRepository.findById(id);
+            especialistaLoad.pagination = _especialistaRepository.pagination(page: page);
             return Json(especialistaLoad);
+        }
+
+
+
+        /// <summary>
+        /// loadHorarios
+        /// </summary>
+        [OpenApiOperation("loadHorarios")]
+        [HttpGet]
+        [Route("loadHorarios/{id}/{id_sucursal}/{id_especialidad}/{dia}")]
+        public ActionResult loadHorarios(int id, int id_sucursal, int id_especialidad, int dia)
+        {
+            var horarioLoad = new HorarioLoad();
+            horarioLoad.horarios = _especialistaRepository.loadHorarios(id, id_sucursal, id_especialidad, dia);
+            horarioLoad.sucursales = _sucursalRepository.findAll();
+            horarioLoad.especialidades = _especialidadRepository.findAll();
+            return Json(horarioLoad);
+            // return Json("hola");
         }
 
         /// <summary>
@@ -78,7 +101,7 @@ namespace UPC.APIBusiness.API.Controllers
         [Route("pagination/{searchText}/{page}")]
         public ActionResult pagination(string searchText = "", int page = 0)
         {
-            var res = especialistaRepository.pagination(searchText, page);
+            var res = _especialistaRepository.pagination(searchText, page);
             if (res == null)
                 return StatusCode(401);
             return Json(res);
@@ -92,7 +115,7 @@ namespace UPC.APIBusiness.API.Controllers
         [Route("filter")]
         public ActionResult filter([FromBody] Filter filter)
         {
-            var res = especialistaRepository.filter(filter);
+            var res = _especialistaRepository.filter(filter);
             if (res == null)
                 return StatusCode(401);
             return Json(res);
@@ -105,7 +128,7 @@ namespace UPC.APIBusiness.API.Controllers
         [HttpPost]
         public ActionResult save([FromBody] EspecialistaExtend especialista)
         {
-            var res = especialistaRepository.save(especialista);
+            var res = _especialistaRepository.save(especialista);
             if (res == null)
                 return StatusCode(401);
             return Json(res);
@@ -120,7 +143,8 @@ namespace UPC.APIBusiness.API.Controllers
         [Route("saveHorarios")]
         public void saveHorarios([FromBody] List<EntityHorario> horarios)
         {
-            especialistaRepository.saveHorarios(horarios);
+            // return Json("hola");
+            _especialistaRepository.saveHorarios(horarios);
         }
 
         /// <summary>
@@ -131,7 +155,7 @@ namespace UPC.APIBusiness.API.Controllers
         [Route("{id}")]
         public void delete(int id)
         {
-            especialistaRepository.delete(id);
+            _especialistaRepository.delete(id);
         }
     }
 }

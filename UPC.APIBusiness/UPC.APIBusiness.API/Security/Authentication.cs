@@ -17,7 +17,7 @@ namespace UPC.E31A.APIBusiness.API.Security
         /// 
         /// </summary>
         /// <returns></returns>
-        public async Task<string> GenerateToken(string numeroDocumento, string codigoUsuario)
+        public async Task<string> GenerateToken(string numeroDocumento, int codigoUsuario)
         {
             var client = new HttpClient();
 

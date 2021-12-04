@@ -1,14 +1,15 @@
 ﻿using Dapper;
 using DBEntity;
-using System;
-using System.Collections.Generic;
 using System.Data;
+using System.Collections.Generic;
 using System.Linq;
+
 
 namespace DBContext
 {
     public class UsuarioRepository : BaseRepository, IUsuarioRepository
     {
+
         public void delete(int id)
         {
             using (var db = GetSqlConnection())

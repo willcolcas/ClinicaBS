@@ -32,25 +32,15 @@ namespace DBContext
             return res;
         }
 
-        public EspecialistaExtend findById(int id)
+        public EntityEspecialista findById(int id)
         {
-            var especialista = new EspecialistaExtend();
+            var especialista = new EntityEspecialista();
             using (var db = GetSqlConnection())
             {
                 const string sql_01 = @"sp_especialista_findById";
-                const string sql_02 = @"sp_horario_findByIdEspecialista";
-
                 DynamicParameters parameters_01 = new DynamicParameters();
                 parameters_01.Add("@id", id);
-
-                especialista = db.Query<EspecialistaExtend>(sql: sql_01, commandType: CommandType.StoredProcedure, param: parameters_01).FirstOrDefault<EspecialistaExtend>();
-
-                if (especialista != null)
-                {
-                    DynamicParameters parameters_02 = new DynamicParameters();
-                    parameters_02.Add("@id_especialista", especialista.id);
-                    especialista.horarios = db.Query<EntityHorario>(sql_02, commandType: CommandType.StoredProcedure, param: parameters_02).ToList();
-                }
+                especialista = db.Query<EntityEspecialista>(sql: sql_01, commandType: CommandType.StoredProcedure, param: parameters_01).FirstOrDefault<EntityEspecialista>();
             }
             return especialista;
         }
@@ -70,9 +60,6 @@ namespace DBContext
             return especialista;
         }
 
-
-
-
         public void saveHorarios(List<EntityHorario> horarios)
         {
             var especialista = new EntityEspecialista();
@@ -83,24 +70,16 @@ namespace DBContext
                     const string sql_02 = @"sp_horario_save";
                     DynamicParameters parameters_02 = new DynamicParameters();
                     parameters_02.Add("@id", item.id);
-                    parameters_02.Add("@id_especialista", item.id);
+                    parameters_02.Add("@id_especialista", item.id_especialista);
                     parameters_02.Add("@id_sucursal", item.id_sucursal);
-                    parameters_02.Add("@id_especialidad", item.id_especialidad);
+                    parameters_02.Add("@id_especilidad", item.id_especialidad);
                     parameters_02.Add("@tipo", item.tipo);
+                    parameters_02.Add("@horario", item.horario);
                     parameters_02.Add("@dia", item.dia);
                     db.Query<EntityHorario>(sql: sql_02, commandType: CommandType.StoredProcedure, param: parameters_02);
                 }
             }
         }
-
-
-
-
-
-
-
-
-
 
         public Pagination<EntityEspecialista> pagination(string searchText = "", int page = 1, int numItems = 10)
         {
@@ -132,6 +111,7 @@ namespace DBContext
                 DynamicParameters parameters_01 = new DynamicParameters();
                 parameters_01.Add("@id_sucursal", filter.id_sucursal);
                 parameters_01.Add("@id_especialidad", filter.id_especialidad);
+                parameters_01.Add("@dia", filter.dia);
                 parameters_01.Add("@num_items", filter.numItems);
                 parameters_01.Add("@page", filter.page - 1);
                 pagination.content = db.Query<EspecialistaExtend>(
@@ -144,7 +124,11 @@ namespace DBContext
                 foreach (var item in pagination.content)
                 {
                     parameters_02.Add("@id_especialista", item.id);
+                    parameters_02.Add("@id_sucursal", filter.id_sucursal);
+                    parameters_02.Add("@id_especialidad", filter.id_especialidad);
+                    parameters_02.Add("@dia", filter.dia);
                     parameters_02.Add("@fecha", filter.fecha);
+
                     item.horarios = db.Query<EntityHorario>(sql_02, commandType: CommandType.StoredProcedure, param: parameters_02).ToList();
                 }
 
@@ -153,6 +137,7 @@ namespace DBContext
                 DynamicParameters parameters_03 = new DynamicParameters();
                 parameters_03.Add("@id_sucursal", filter.id_sucursal);
                 parameters_03.Add("@id_especialidad", filter.id_especialidad);
+                parameters_03.Add("@dia", filter.dia);
                 parameters_03.Add("@num_items", filter.numItems);
                 pagination.totalPages = db.Query<int>(sql: sql_03, commandType: CommandType.StoredProcedure, param: parameters_03).FirstOrDefault<int>();
 
@@ -165,5 +150,22 @@ namespace DBContext
         {
             throw new NotImplementedException();
         }
+
+        public List<EntityHorario> loadHorarios(int id, int id_sucursal, int id_especialidad, int dia)
+        {
+            var horarios = new List<EntityHorario>();
+            using (var db = GetSqlConnection())
+            {
+                DynamicParameters parameters_02 = new DynamicParameters();
+                const string sql_02 = @"sp_horario_findByIdEspecialista";
+                parameters_02.Add("@id_especialista", id);
+                parameters_02.Add("@id_sucursal", id_sucursal);
+                parameters_02.Add("@id_especialidad", id_especialidad);
+                parameters_02.Add("@dia", dia);
+                horarios = db.Query<EntityHorario>(sql_02, commandType: CommandType.StoredProcedure, param: parameters_02).ToList();
+            }
+            return horarios;
+        }
     }
 }
+

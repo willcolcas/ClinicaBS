@@ -153,7 +153,6 @@ namespace API
                 c.SwaggerEndpoint($"{AppSettingsProvider.config.Version}/swagger.json", $"{AppSettingsProvider.config.ApplicationName}");
             });
 
-
             app.UseHttpsRedirection();
             app.UseRouting();
 

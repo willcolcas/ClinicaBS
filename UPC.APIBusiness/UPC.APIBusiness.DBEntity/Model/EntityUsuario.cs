@@ -11,5 +11,6 @@ namespace DBEntity
         public string nro_documento { get; set; }
         public int id_tipo_usuario { get; set; }
         public string contrasena { get; set; }
+        public string token { get; set; }
     }
 }

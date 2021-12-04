@@ -1,4 +1,5 @@
-﻿using DBContext;
+﻿using System.Threading.Tasks;
+using DBContext;
 using DBEntity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -87,11 +88,15 @@ namespace UPC.APIBusiness.API.Controllers
         [OpenApiOperation("login")]
         [HttpPost]
         [Route("login")]
-        public ActionResult login([FromBody] Login login)
+        public async Task<ActionResult> login([FromBody] Login login)
         {
             var res = _UsuarioRepository.login(login);
-            if (res == null)
+            if (res != null)
+                res.token = "";
+                // res.token = _IJwtAuthenticationService.Authenticate(login.email, login.contrasena);
+            else
                 return StatusCode(401);
+
             return Json(res);
         }
 

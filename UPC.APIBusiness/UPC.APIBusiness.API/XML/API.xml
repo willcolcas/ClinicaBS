@@ -362,12 +362,12 @@
             Controller
             </summary>
         </member>
-        <member name="F:UPC.APIBusiness.API.Controllers.EspecialistaController.especialistaRepository">
+        <member name="F:UPC.APIBusiness.API.Controllers.EspecialistaController._especialistaRepository">
             <summary>
             _EspecialistaRepository
             </summary>
         </member>
-        <member name="M:UPC.APIBusiness.API.Controllers.EspecialistaController.#ctor(DBContext.IEspecialistaRepository)">
+        <member name="M:UPC.APIBusiness.API.Controllers.EspecialistaController.#ctor(DBContext.IEspecialistaRepository,DBContext.ISucursalRepository,DBContext.IEspecialidadRepository)">
             <summary>
             Constructor
             </summary>
@@ -385,6 +385,11 @@
         <member name="M:UPC.APIBusiness.API.Controllers.EspecialistaController.load(System.Int32,System.Int32)">
             <summary>
             load
+            </summary>
+        </member>
+        <member name="M:UPC.APIBusiness.API.Controllers.EspecialistaController.loadHorarios(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            loadHorarios
             </summary>
         </member>
         <member name="M:UPC.APIBusiness.API.Controllers.EspecialistaController.pagination(System.String,System.Int32)">
@@ -492,7 +497,7 @@
             _UsuarioRepository
             </summary>
         </member>
-        <member name="M:UPC.APIBusiness.API.Controllers.UsuarioController.#ctor(DBContext.IUsuarioRepository)">
+        <member name="M:UPC.APIBusiness.API.Controllers.UsuarioController.#ctor(DBContext.IUsuarioRepository,Expiry.Auth.IJwtAuthenticationService)">
             <summary>
             Constructor
             </summary>
@@ -579,7 +584,7 @@
             
             </summary>
         </member>
-        <member name="M:UPC.E31A.APIBusiness.API.Security.Authentication.GenerateToken(System.String,System.String)">
+        <member name="M:UPC.E31A.APIBusiness.API.Security.Authentication.GenerateToken(System.String,System.Int32)">
             <summary>
             
             </summary>

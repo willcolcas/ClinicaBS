@@ -15,7 +15,7 @@ namespace DBContext
             {
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("@id", id);
-                const string sql = @"sp_cita_delete";
+                const string sql = @"sp_cita_cancel";
                 db.Query<EntityCita>(sql: sql, commandType: CommandType.StoredProcedure, param: parameters);
             }
         }

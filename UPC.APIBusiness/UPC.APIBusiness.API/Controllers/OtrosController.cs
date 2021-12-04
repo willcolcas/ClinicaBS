@@ -12,6 +12,7 @@ namespace UPC.APIBusiness.API.Controllers
     [AllowAnonymous]
     [Produces("application/json")]
     [Route("api/otros")]
+
     public class OtrosController : Controller
     {
 

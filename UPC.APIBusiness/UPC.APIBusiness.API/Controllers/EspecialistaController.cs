@@ -12,7 +12,7 @@ namespace UPC.APIBusiness.API.Controllers
     /// <summary>
     /// Controller
     /// </summary>
-    [AllowAnonymous]
+    [Authorize]
     [Produces("application/json")]
     [Route("api/especialista")]
 

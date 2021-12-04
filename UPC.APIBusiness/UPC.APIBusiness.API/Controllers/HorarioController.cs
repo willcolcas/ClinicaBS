@@ -11,8 +11,7 @@ namespace UPC.APIBusiness.API.Controllers
     /// </summary>
     [Produces("application/json")]
     [Route("api/horario")]
-    [AllowAnonymous]
-
+    [Authorize]
     public class HorarioController : Controller
     {
         /// <summary>

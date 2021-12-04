@@ -3,14 +3,16 @@ using DBContext;
 using DBEntity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using NSwag.Annotations;
+using UPC.E31A.APIBusiness.API.Security;
 
 namespace UPC.APIBusiness.API.Controllers
 {
     /// <summary>
     /// Controller
     /// </summary>
-    [AllowAnonymous]
+
     [Produces("application/json")]
     [Route("api/usuario")]
     public class UsuarioController : Controller
@@ -31,6 +33,7 @@ namespace UPC.APIBusiness.API.Controllers
         /// </summary>
         [OpenApiOperation("findAll")]
         [HttpGet]
+        [Authorize]
         public ActionResult findAll()
         {
             var res = _UsuarioRepository.findAll();
@@ -44,6 +47,7 @@ namespace UPC.APIBusiness.API.Controllers
         /// </summary>
         [OpenApiOperation("findById")]
         [HttpGet]
+        [Authorize]
         [Route("{id}")]
         public ActionResult findById(int id)
         {
@@ -58,6 +62,7 @@ namespace UPC.APIBusiness.API.Controllers
         /// </summary>
         [OpenApiOperation("pagination")]
         [HttpGet]
+        [Authorize]
         [Route("pagination/{searchText}/{page}")]
         public ActionResult pagination(string searchText = "", int page = 0)
         {
@@ -92,26 +97,27 @@ namespace UPC.APIBusiness.API.Controllers
         {
             var res = _UsuarioRepository.login(login);
             if (res != null)
-                res.token = "";
-                // res.token = _IJwtAuthenticationService.Authenticate(login.email, login.contrasena);
+            {
+                res.token = string.Concat("Bearer ", JsonConvert.DeserializeObject<AccessToken>(
+                    await new Authentication().GenerateToken(res.nro_documento, res.id)).access_token);
+            }
             else
+            {
                 return StatusCode(401);
+            }
 
             return Json(res);
         }
-
-
         /// <summary>
         /// delete
         /// </summary>
         [OpenApiOperation("delete")]
         [HttpDelete]
+        [Authorize]
         [Route("{id}")]
         public void delete(int id)
         {
             _UsuarioRepository.delete(id);
         }
-
-
     }
 }

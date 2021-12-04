@@ -497,7 +497,7 @@
             _UsuarioRepository
             </summary>
         </member>
-        <member name="M:UPC.APIBusiness.API.Controllers.UsuarioController.#ctor(DBContext.IUsuarioRepository,Expiry.Auth.IJwtAuthenticationService)">
+        <member name="M:UPC.APIBusiness.API.Controllers.UsuarioController.#ctor(DBContext.IUsuarioRepository)">
             <summary>
             Constructor
             </summary>

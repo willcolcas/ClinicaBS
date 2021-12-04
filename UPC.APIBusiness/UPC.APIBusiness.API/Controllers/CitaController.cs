@@ -11,7 +11,7 @@ namespace UPC.APIBusiness.API.Controllers
     /// <summary>
     /// Controller
     /// </summary>
-    [AllowAnonymous]
+    [Authorize]
     [Route("api/cita")]
     [Produces("application/json")]
     public class CitaController : Controller

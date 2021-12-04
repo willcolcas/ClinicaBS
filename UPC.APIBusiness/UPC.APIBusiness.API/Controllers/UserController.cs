@@ -18,7 +18,7 @@ namespace UPC.Business.API.Controllers
     /// </summary>
     [Produces("application/json")]
     [Route("api/User")]
-
+    [Authorize]
     public class UserController : Controller
     {
 
@@ -43,7 +43,7 @@ namespace UPC.Business.API.Controllers
         /// </summary>
         /// <returns></returns>
         [Produces("application/json")]
-        [SwaggerOperation("GetListUser")]
+        [OpenApiOperation("GetListUser")]
         [AllowAnonymous]
         [HttpGet]
         [Route("GetListUser")]
@@ -52,7 +52,7 @@ namespace UPC.Business.API.Controllers
             var res = _UserRepository.GetUsers();
 
             if (res == null)
-               return StatusCode(401);
+                return StatusCode(401);
 
             return Json(res);
         }

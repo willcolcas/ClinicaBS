@@ -11,8 +11,7 @@ namespace UPC.APIBusiness.API.Controllers
     /// </summary>
     [Produces("application/json")]
     [Route("api/sucursal")]
-    [AllowAnonymous]
-
+    [Authorize]
     public class SucursalController : Controller
     {
         /// <summary>

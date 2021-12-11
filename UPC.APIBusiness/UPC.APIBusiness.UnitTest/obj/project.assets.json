@@ -9161,19 +9161,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\elber\\.nuget\\packages\\": {}
+    "C:\\Users\\DarkSoulWilly\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\elber\\Documents\\GitHub\\ncGilbertClinica\\UPC.APIBusiness\\UPC.APIBusiness.UnitTest\\UPC.APIBusiness.UnitTest.csproj",
+      "projectUniqueName": "D:\\Proyectos\\UPC\\DesarrolloWeb2021-II\\TF_Clinica\\ClinicaBS\\ncClinica\\UPC.APIBusiness\\UPC.APIBusiness.UnitTest\\UPC.APIBusiness.UnitTest.csproj",
       "projectName": "UPC.APIBusiness.UnitTest",
-      "projectPath": "C:\\Users\\elber\\Documents\\GitHub\\ncGilbertClinica\\UPC.APIBusiness\\UPC.APIBusiness.UnitTest\\UPC.APIBusiness.UnitTest.csproj",
-      "packagesPath": "C:\\Users\\elber\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\elber\\Documents\\GitHub\\ncGilbertClinica\\UPC.APIBusiness\\UPC.APIBusiness.UnitTest\\obj\\",
+      "projectPath": "D:\\Proyectos\\UPC\\DesarrolloWeb2021-II\\TF_Clinica\\ClinicaBS\\ncClinica\\UPC.APIBusiness\\UPC.APIBusiness.UnitTest\\UPC.APIBusiness.UnitTest.csproj",
+      "packagesPath": "C:\\Users\\DarkSoulWilly\\.nuget\\packages\\",
+      "outputPath": "D:\\Proyectos\\UPC\\DesarrolloWeb2021-II\\TF_Clinica\\ClinicaBS\\ncClinica\\UPC.APIBusiness\\UPC.APIBusiness.UnitTest\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\elber\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\DarkSoulWilly\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9187,11 +9191,11 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\elber\\Documents\\GitHub\\ncGilbertClinica\\UPC.APIBusiness\\UPC.APIBusiness.API\\UPC.APIBusiness.API.csproj": {
-              "projectPath": "C:\\Users\\elber\\Documents\\GitHub\\ncGilbertClinica\\UPC.APIBusiness\\UPC.APIBusiness.API\\UPC.APIBusiness.API.csproj"
+            "D:\\Proyectos\\UPC\\DesarrolloWeb2021-II\\TF_Clinica\\ClinicaBS\\ncClinica\\UPC.APIBusiness\\UPC.APIBusiness.API\\UPC.APIBusiness.API.csproj": {
+              "projectPath": "D:\\Proyectos\\UPC\\DesarrolloWeb2021-II\\TF_Clinica\\ClinicaBS\\ncClinica\\UPC.APIBusiness\\UPC.APIBusiness.API\\UPC.APIBusiness.API.csproj"
             },
-            "C:\\Users\\elber\\Documents\\GitHub\\ncGilbertClinica\\UPC.APIBusiness\\UPC.APIBusiness.DBContext\\UPC.APIBusiness.DBContext.csproj": {
-              "projectPath": "C:\\Users\\elber\\Documents\\GitHub\\ncGilbertClinica\\UPC.APIBusiness\\UPC.APIBusiness.DBContext\\UPC.APIBusiness.DBContext.csproj"
+            "D:\\Proyectos\\UPC\\DesarrolloWeb2021-II\\TF_Clinica\\ClinicaBS\\ncClinica\\UPC.APIBusiness\\UPC.APIBusiness.DBContext\\UPC.APIBusiness.DBContext.csproj": {
+              "projectPath": "D:\\Proyectos\\UPC\\DesarrolloWeb2021-II\\TF_Clinica\\ClinicaBS\\ncClinica\\UPC.APIBusiness\\UPC.APIBusiness.DBContext\\UPC.APIBusiness.DBContext.csproj"
             }
           }
         }
@@ -9234,7 +9238,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

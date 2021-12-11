@@ -522,19 +522,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\elber\\.nuget\\packages\\": {}
+    "C:\\Users\\DarkSoulWilly\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\elber\\Documents\\GitHub\\ncGilbertClinica\\UPC.APIBusiness\\UPC.APIBusiness.API.IS\\UPC.APIBusiness.API.IS.csproj",
+      "projectUniqueName": "D:\\Proyectos\\UPC\\DesarrolloWeb2021-II\\TF_Clinica\\ClinicaBS\\ncClinica\\UPC.APIBusiness\\UPC.APIBusiness.API.IS\\UPC.APIBusiness.API.IS.csproj",
       "projectName": "UPC.APIBusiness.API.IS",
-      "projectPath": "C:\\Users\\elber\\Documents\\GitHub\\ncGilbertClinica\\UPC.APIBusiness\\UPC.APIBusiness.API.IS\\UPC.APIBusiness.API.IS.csproj",
-      "packagesPath": "C:\\Users\\elber\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\elber\\Documents\\GitHub\\ncGilbertClinica\\UPC.APIBusiness\\UPC.APIBusiness.API.IS\\obj\\",
+      "projectPath": "D:\\Proyectos\\UPC\\DesarrolloWeb2021-II\\TF_Clinica\\ClinicaBS\\ncClinica\\UPC.APIBusiness\\UPC.APIBusiness.API.IS\\UPC.APIBusiness.API.IS.csproj",
+      "packagesPath": "C:\\Users\\DarkSoulWilly\\.nuget\\packages\\",
+      "outputPath": "D:\\Proyectos\\UPC\\DesarrolloWeb2021-II\\TF_Clinica\\ClinicaBS\\ncClinica\\UPC.APIBusiness\\UPC.APIBusiness.API.IS\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\elber\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\DarkSoulWilly\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -592,7 +596,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }
